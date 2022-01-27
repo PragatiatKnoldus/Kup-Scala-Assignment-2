@@ -4,13 +4,13 @@ import org.scalatest.flatspec.AnyFlatSpec
 
 class LoggingTest extends AnyFlatSpec {
 
-  "A log" should "be valid" in {
-    val obj = new Logging()
-    assert ("[INFO]: Some information" == obj.log("Some information"))
+  val logging = new Logging()
+
+  "A log" should "give default value of level and message if no level is provided" in {
+    assert("[INFO]: Some information" == logging.log("Some information"))
   }
 
-  "A log" should "be valid as" in {
-    val obj = new Logging()
-    assert ("[WARN]: This is a warning" == obj.log("This is a warning","WARN"))
+  "A log" should "give level and message if some level is provided" in {
+    assert("[WARN]: This is a warning" == logging.log("This is a warning", "warn"))
   }
 }

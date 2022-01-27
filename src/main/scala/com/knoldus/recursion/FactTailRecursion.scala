@@ -1,10 +1,15 @@
 package com.knoldus.recursion
 
+import scala.annotation.tailrec
+
 class FactTailRecursion {
 
-  def tailRecursiveFactorial(num: Int, acc: Int = 1): Int = {
-    if (num < 1) acc
-    else tailRecursiveFactorial(num - 1, acc*num)
+  def tailRecursiveFactorial(element: Int): BigInt = {
+    @tailrec
+    def innerTailRecursion(number: Int, accumulator: BigInt = 1): BigInt = {
+      if (number <= 1) accumulator
+      else innerTailRecursion(number - 1, accumulator * number)
+    }
+    innerTailRecursion(element)
   }
-
 }
